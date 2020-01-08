@@ -25,9 +25,24 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
   }, 0);
 };
 
-Traveller.prototype.getUniqueModesOfTransport = function () {
+// Set() method:
 
+// Traveller.prototype.getUniqueModesOfTransport = function () {
+//   const modesOfTransport = this.journeys.map(journey => journey.transport);
+//   return [...new Set(modesOfTransport)];
+// };
+
+
+// indexOf returns the position of the first occurrence. So if the index of an item does not equal the first occurrence, then it must not be unique. So it then filters by this rule.
+
+Traveller.prototype.getUniqueModesOfTransport = function () {
+  const modesOfTransport = this.journeys.map(journey => journey.transport);
+  return modesOfTransport.filter((transport, index) => {
+    return modesOfTransport.indexOf(transport) === index;
+  });
 };
+
+
 
 
 module.exports = Traveller;
